@@ -1,0 +1,103 @@
+/*
+    File Name: style.css
+    Description: Main style sheet for app
+
+    @author: Analia Mok
+ */
+
+/* Mass Reset & Initial Setup */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Montserrat, sans-serif;
+    color: #FFF;
+}
+
+html, body{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+main{
+    display: -webkit-flex;
+    display: flex;
+
+    width: 100%;
+    height: 100%;
+
+    /* Place in middle of window */
+    -webkit-justify-content: center;
+    justify-content: center;
+    align-items: center;
+
+     /* Backup color */
+    background-color: #3498db;
+
+    /* Gradient from top to bottom; from green to blue */
+    background: -webkit-linear-gradient(#1ABC9C,#3498DB);
+    background: -o-linear-gradient(#1ABC9C,#3498DB);
+    background: -moz-linear-gradient(#1ABC9C,#3498DB);
+    background: linear-gradient(#1ABC9C,#3498DB);
+}
+
+div#clock-holder{
+    display: inline-block;
+    text-align: center;
+    text-shadow: 0 3px 6px rgba(0, 0, 0, .16);
+}
+
+
+
+div#clock span{
+    display: block;
+    font-size: 5rem;
+}
+
+/* AM/PM text */
+div#clock span span{
+    display: inline;
+    font-size: 3rem;
+}
+
+div#clock span#standard{
+    margin: 1rem 0 0 0;
+}
+
+div#clock span#military{
+    font-size: 2rem;
+    font-weight: 400;
+    color: #EEE;
+}
+
+div#schedule-holder{
+    width: 25%;
+    max-height: 40%;
+    padding: 1rem 1rem 1rem 2rem;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: #FFF;
+    text-align: left;
+
+    box-shadow: 2px -2px 10px rgba(0, 0, 0, 0.16);
+}
+
+div#schedule-holder ul{
+    list-style-type: circle;
+}
+
+div#schedule-holder ul li{
+    margin-bottom: 0.5rem;
+    color: #3498DB;
+    font-size: 0.9rem;
+    font-family: Raleway, sans-serif;
+}
+
+div#schedule-holder ul li span{
+    color: #3498DB;
+    font-weight: 500;
+    font-style: italic;
+}

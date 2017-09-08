@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ClockApp</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat%7COpen+Sans%7CRaleway" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <main>
+        <div id="clock-holder">
+            <h2 id="date">Current Time</h2>
+            <div id="clock">
+                <span id="standard"></span>
+                <span id="military"></span>
+            </div>
+        </div>
+        <div id="schedule-holder">
+            <ul>
+                <li>Foundations of Mobile Design <span>@1:25PM<span></li>
+                <li>Intro to Computer Graphics <span>@3:30PM</span></li>
+                <li>Concepts of Parallel and Distributed Systems <span>@5:30PM</span></li>
+            </ul>
+        </div>
+    </main>
+</body>
+<script type="text/javascript">
+
+    window.onload = init;
+
+    function init(){
+
+        // Change date
+        var today = new Date(),
+            month = today.getMonth(),
+            day = today.getDate();
+
+        var monthNames = [
+            "Jan.", "Feb.", "Mar.", "Apr.", "May", "June", "July",
+            "Aug.", "Sept.", "Oct.", "Nov.r", "Dec."
+        ];
+
+        // Applying suffix to day of month
+        switch(day){
+            case 1:
+                day += "st";
+                break;
+            case 2:
+                day += "nd";
+                break;
+            case 3:
+                day += "rd";
+                break;
+            default:
+                day += "th";
+                break;
+        }
+
+        document.getElementById("date").innerHTML = `Today is ${monthNames[month]} ${day}`;
+
+        // Start clock
+        startTime();
+    }
+
+    // Code From w3schools example
+    function startTime() {
+        var today = new Date();
+        var h = today.getHours();
+        var m = today.getMinutes();
+        var s = today.getSeconds();
+        m = checkTime(m);
+        s = checkTime(s);
+        document.getElementById('military').innerHTML =
+        h + ":" + m + ":" + s;
+
+        // My addition to also show standard time
+        if(h > 12){
+            // Subtract 12 hours if after 12pm
+            h -= 12;
+            document.getElementById('standard').innerHTML =
+            h + ":" + m + " <span>PM</span>";
+        }else{
+            document.getElementById('standard').innerHTML =
+            h + ":" + m + " AM";
+        }
+
+        var t = setTimeout(startTime, 500);
+    }
+
+    function checkTime(i) {
+        if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+        return i;
+    }
+
+</script>
+<script type="text/javascript">
+    require('./renderer.js');
+</script>
+</html>
