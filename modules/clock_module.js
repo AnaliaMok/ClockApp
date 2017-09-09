@@ -11,6 +11,9 @@ var Clock = (function(){
     // Date Info
     let today, month, day;
 
+    // Time info
+    let hour, minute, seconds;
+
     // Month Names used for displaying current date
     let monthNames = [
         "Jan.", "Feb.", "Mar.", "Apr.", "May", "June", "July",
@@ -20,28 +23,31 @@ var Clock = (function(){
     // Just a global id for setTimeout
     let timerId;
 
-    // Code From w3schools example
+    // Code Adjusted from w3schools example
     function startTime() {
 
         // Update date object
         today = new Date();
 
-        var h = today.getHours();
-        var m = today.getMinutes();
-        var s = today.getSeconds();
-        m = checkTime(m);
-        s = checkTime(s);
-        document.getElementById('military').innerHTML = h + ":" + m + ":" + s;
+        hour = today.getHours();
+        minute = today.getMinutes();
+        seconds = today.getSeconds();
+
+        minute = checkTime(minute);
+        seconds = checkTime(seconds);
+        document.getElementById('military').innerHTML =
+            `${hour}:${minute}:${seconds}`;
+
 
         // My additions to also show standard time
-        if(h > 12){
+        if(hour > 12){
             // Subtract 12 hours if after 12pm
-            h -= 12;
+            hour -= 12;
             document.getElementById('standard').innerHTML =
-                h + ":" + m + " <span>PM</span>";
+                `${hour}:${minute} <span>PM</span>`;
         }else{
             document.getElementById('standard').innerHTML =
-                h + ":" + m + " AM";
+                `${hour}:${minute} <span>AM</span>`;
         }
 
         // Checking date
