@@ -56,6 +56,11 @@ var Clock = (function(){
             changeDate();
         }
 
+        // If curr minute is a multiple of 5, update schedule
+        if(minute % 5 === 0 && seconds === 0){
+            Schedule.updateSchedule();
+        }
+
         timerId = window.setTimeout(startTime, 500);
     } // End of startTime
 
