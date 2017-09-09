@@ -31,8 +31,6 @@ var Schedule = (function(){
         hours = today.getHours();
         minutes = today.getMinutes();
 
-        console.log("Updating Schedule...");
-
         // Looping through schedule if exists
         var contents = ``;
         if(Object.keys(schedule).length > 0){
@@ -82,7 +80,7 @@ var Schedule = (function(){
         // Insert Content
         document.getElementById("schedule").innerHTML = contents;
 
-    } // End of insertSchedule
+    } // End of updateSchedule
 
 
     // Mapping methods

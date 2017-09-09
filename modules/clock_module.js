@@ -57,7 +57,8 @@ var Clock = (function(){
         }
 
         // If curr minute is a multiple of 5, update schedule
-        if(minute % 5 === 0 && seconds === 0){
+        if(parseInt(minute) % 5 === 0 && parseInt(seconds) === 0){
+            console.log("Updating Schedule...");
             Schedule.updateSchedule();
         }
 
@@ -126,4 +127,4 @@ var Clock = (function(){
         }
     };
 
-})();
+})(Schedule);
