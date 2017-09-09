@@ -17,7 +17,7 @@ var Schedule = (function(){
     let today, weekday, schedule, hours, minutes;
 
     // Constant for no events template literal
-    let NOEVENTS = `<li>Nothing Scheduled for Today</li>`;
+    let NOEVENTS = `<li>Nothing Scheduled</li>`;
 
     /**
      * updateSchedule - Looks for today's events in schedule data, checks current

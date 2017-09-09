@@ -9,10 +9,14 @@
 var Clock = (function(){
 
     // Date Info
-    let today, month, day;
+    let today = new Date(),
+        month = today.getMonth(),
+        day = today.getDate();
 
     // Time info
-    let hour, minute, seconds;
+    let hour = today.getHours(),
+        minute = today.getMinutes(),
+        seconds = today.getSeconds();
 
     // Month Names used for displaying current date
     let monthNames = [
@@ -23,31 +27,56 @@ var Clock = (function(){
     // Just a global id for setTimeout
     let timerId;
 
+    // Canvas Variables
+    let canvas = document.getElementById('background-gradient'),
+        context = canvas.getContext('2d');
+
+    // Color Stops for Three Stages of the Day
+    let colorStops = [
+        ["#f1c40f", "#d35400"],     // Early Morning
+        ["#1ABC9C", "#3498DB"],     // Day Time
+        ["#9b59b6", "#2c3e50"]      // Night Time
+    ];
+
+    // By default, the day time theme is selected (Index 1)
+    let currStopIdx = 1;
+
+
+    // Method Definitions
+
     // Code Adjusted from w3schools example
     function startTime() {
 
         // Update date object
-        today = new Date();
+        var currDay = new Date(),
+            currHour = currDay.getHours(),
+            currMinute = currDay.getMinutes(),
+            currSeconds = currDay.getSeconds();
 
-        hour = today.getHours();
-        minute = today.getMinutes();
-        seconds = today.getSeconds();
-
-        minute = checkTime(minute);
-        seconds = checkTime(seconds);
+        currMinute = checkTime(currMinute);
+        currSeconds = checkTime(currSeconds);
         document.getElementById('military').innerHTML =
-            `${hour}:${minute}:${seconds}`;
+            `${currHour}:${currMinute}:${currSeconds}`;
 
+        // Checking if background gradient should be changed
+        if(hour != currHour){
+            // Update hour
+            hour = currHour;
 
-        // My additions to also show standard time
-        if(hour > 12){
-            // Subtract 12 hours if after 12pm
-            hour -= 12;
+            // Then update background - if necessary
+            changeBackground();
+        }
+
+        // Adjusting for standard time
+        if(currHour > 12){
+            // Subtract 12 currHours if after 12pm
+            currHour -= 12;
             document.getElementById('standard').innerHTML =
-                `${hour}:${minute} <span>PM</span>`;
+                `${currHour}:${currMinute} <span>PM</span>`;
+
         }else{
             document.getElementById('standard').innerHTML =
-                `${hour}:${minute} <span>AM</span>`;
+                `${currHour}:${currMinute} <span>AM</span>`;
         }
 
         // Checking date
@@ -56,8 +85,8 @@ var Clock = (function(){
             changeDate();
         }
 
-        // If curr minute is a multiple of 5, update schedule
-        if(parseInt(minute) % 5 === 0 && parseInt(seconds) === 0){
+        // If curr currMinute is a multiple of 5, update schedule
+        if(parseInt(currMinute) % 5 === 0 && parseInt(currSeconds) === 0){
             console.log("Updating Schedule...");
             Schedule.updateSchedule();
         }
@@ -119,11 +148,75 @@ var Clock = (function(){
 
     } // End of changeDate
 
+
+    /**
+     * changeBackground - Changes the gradient based on the current time
+     * @return {[type]} [description]
+     */
+    function changeBackground(isInit){
+
+        if(isInit === undefined){
+            // By default, function is not called on startup
+            isInit = false;
+        }
+
+        // Default colorStop selection pair &
+        // starting point and ending point of gradient
+        var selection = 0,
+            startPoint = [],
+            endPoint = [];
+
+        if(hour >= 6 && hour <= 11){
+            // Between 6am and 11am - Early Morning Theme
+            selection = 0;
+
+            // Linear gradient with 45 deg rotation CW
+            startPoint = [0, 0];
+            endPoint = [canvas.width,canvas.height];
+        }else if(hour > 11 && hour < 20){
+            // Between 11am and 8pm - Day Time Theme
+            selection = 1;
+
+            // Plain Linear gradient from top to bottom
+            startPoint = [canvas.width/2, 0];
+            endPoint = [canvas.width/2,canvas.height];
+
+        }else if(hour >= 20 || hour < 6){
+            // Between 8pm and 6am - Nighttime Theme
+            selection = 2;
+
+            // Linear gradient with 45 deg rotation CCW
+            startPoint = [0, canvas.height];
+            endPoint = [canvas.width, 0];
+        }
+
+        // If the current selection is not already active OR if the app
+        // just started, change gradient
+        if(currStopIdx !== selection || isInit){
+
+            var grad = context.createLinearGradient(
+                canvas.width/2,0,canvas.width/2,canvas.height
+            );
+
+            grad.addColorStop(0, colorStops[selection][0]);
+            grad.addColorStop(0.27, colorStops[selection][0]);
+            grad.addColorStop(1, colorStops[selection][1]);
+
+            context.fillStyle = grad;
+            context.fillRect(0, 0, canvas.width, canvas.height);
+
+            currStopIdx = selection;
+        }
+
+
+    } // End of changeBackground
+
     // Method Mapping
     return {
         init: function(){
             changeDate();
             startTime();
+            changeBackground(true);
         }
     };
 

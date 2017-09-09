@@ -19,11 +19,44 @@ html, body{
     width: 100%;
     height: 100%;
     text-align: center;
+    overflow: hidden;
+}
+
+canvas#background-gradient{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+
+    /* Early Morning Gradient */
+    /*background: -webkit-linear-gradient(#f1c40f 35%,#d35400);
+    background: -o-linear-gradient(#f1c40f 35%,#d35400);
+    background: -moz-linear-gradient(#f1c40f 35%,#d35400);
+    background: linear-gradient(#f1c40f 35%,#d35400);*/
+
+    /* Day Time Gradient; from green to blue */
+    /*background: -webkit-linear-gradient(#1ABC9C 35%,#3498DB);
+    background: -o-linear-gradient(#1ABC9C 35%,#3498DB);
+    background: -moz-linear-gradient(#1ABC9C 35%,#3498DB);
+    background: linear-gradient(#1ABC9C 35%,#3498DB);*/
+
+    /* Night Time Gradient */
+    /*background: -webkit-linear-gradient(#9b59b6,#2c3e50);
+    background: -o-linear-gradient(#9b59b6,#2c3e50);
+    background: -moz-linear-gradient(#9b59b6,#2c3e50);
+    background: linear-gradient(#9b59b6,#2c3e50);*/
 }
 
 main{
     display: -webkit-flex;
     display: flex;
+    position: absolute;
+    z-index: 50;
 
     width: 100%;
     height: 100%;
@@ -34,13 +67,9 @@ main{
     align-items: center;
 
      /* Backup color */
-    background-color: #3498db;
+    /*background-color: #3498db;*/
 
-    /* Gradient from top to bottom; from green to blue */
-    background: -webkit-linear-gradient(#1ABC9C,#3498DB);
-    background: -o-linear-gradient(#1ABC9C,#3498DB);
-    background: -moz-linear-gradient(#1ABC9C,#3498DB);
-    background: linear-gradient(#1ABC9C,#3498DB);
+
 }
 
 div#clock-holder{
@@ -88,10 +117,13 @@ div#schedule-holder ul{
 }
 
 div#schedule-holder ul li{
-    margin-bottom: 0.5rem;
     color: #3498DB;
     font-size: 0.9rem;
     font-family: Raleway, sans-serif;
+}
+
+div#schedule-holder ul li:not(:last-child){
+    margin-bottom: 0.5rem;
 }
 
 div#schedule-holder ul li span{
