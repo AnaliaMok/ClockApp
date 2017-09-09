@@ -1,31 +1,29 @@
-{
-    "0": { // Sunday: Nothing
-
-    },
-    "1": { // Monday
+data = [
+    {}, // Sunday
+    { // Monday
         "Foundations of Mobile Design": "1:25PM",
         "Intro to Computer Graphics": "3:30PM",
         "Concepts of Parallel and Distributed Systems ": "5:30PM"
     },
-    "2": { // Tuesday
+    { // Tuesday
         "Principles of Database Management": "8:00AM",
         "Advanced Linear Algebra": "3:30PM",
         "Work": "6:30PM"
     },
-    "3": { // Wednesday
+    { // Wednesday
         "Foundations of Mobile Design": "1:25PM",
         "Intro to Computer Graphics": "3:30PM",
         "Concepts of Parallel and Distributed Systems ": "5:30PM"
     },
-    "4": { // Thursday
+    { // Thursday
         "Principles of Database Management": "8:00AM",
         "Advanced Linear Algebra": "3:30PM",
         "Work": "6:30PM"
     },
-    "5": { // Friday
+    { // Friday
         "Foundations of Mobile Design": "1:25PM"
     },
-    "6": { // Saturday
+    { // Saturday
         "Work": "11:30AM"
     }
-}
+];

@@ -18,15 +18,16 @@
             </div>
         </div>
         <div id="schedule-holder">
-            <ul>
-                <li>Foundations of Mobile Design <span>@1:25PM<span></li>
+            <ul id="schedule">
+                <!-- <li>Foundations of Mobile Design <span>@1:25PM<span></li>
                 <li>Intro to Computer Graphics <span>@3:30PM</span></li>
-                <li>Concepts of Parallel and Distributed Systems <span>@5:30PM</span></li>
+                <li>Concepts of Parallel and Distributed Systems <span>@5:30PM</span></li> -->
             </ul>
         </div>
     </main>
 </body>
 <script src="modules/clock_module.js"></script>
+<script src="assets/data/schedule.json"></script>
 <script src="modules/schedule_module.js"></script>
 <script type="text/javascript">
 
@@ -35,6 +36,9 @@
     function init(){
         // Initializing clock
         Clock.init();
+
+        // Initializing Schedule
+        Schedule.insertSchedule();
     }
 
 </script>

@@ -17,7 +17,7 @@ var Clock = (function(){
     // Month Names used for displaying current date
     let monthNames = [
         "Jan.", "Feb.", "Mar.", "Apr.", "May", "June", "July",
-        "Aug.", "Sept.", "Oct.", "Nov.r", "Dec."
+        "Aug.", "Sept.", "Oct.", "Nov.", "Dec."
     ];
 
     // Just a global id for setTimeout
