@@ -9,9 +9,7 @@
 var Clock = (function(){
 
     // Date Info
-    var today = new Date(),
-        month = today.getMonth(),
-        day = today.getDate();
+    let today, month, day;
 
     // Month Names used for displaying current date
     let monthNames = [
@@ -20,7 +18,7 @@ var Clock = (function(){
     ];
 
     // Just a global id for setTimeout
-    var timerId;
+    let timerId;
 
     // Code From w3schools example
     function startTime() {
@@ -33,18 +31,23 @@ var Clock = (function(){
         var s = today.getSeconds();
         m = checkTime(m);
         s = checkTime(s);
-        document.getElementById('military').innerHTML =
-        h + ":" + m + ":" + s;
+        document.getElementById('military').innerHTML = h + ":" + m + ":" + s;
 
-        // My addition to also show standard time
+        // My additions to also show standard time
         if(h > 12){
             // Subtract 12 hours if after 12pm
             h -= 12;
             document.getElementById('standard').innerHTML =
-            h + ":" + m + " <span>PM</span>";
+                h + ":" + m + " <span>PM</span>";
         }else{
             document.getElementById('standard').innerHTML =
-            h + ":" + m + " AM";
+                h + ":" + m + " AM";
+        }
+
+        // Checking date
+        if(checkDate()){
+            // If dates are different, update displayed date
+            changeDate();
         }
 
         timerId = window.setTimeout(startTime, 500);
@@ -56,11 +59,31 @@ var Clock = (function(){
         return i;
     }
 
+
+    /**
+     * checkDate - Creates a new Date object and compares the day and month to
+     * the currently set day and month.
+     * @return true if day and month are different, false otherwise
+     */
+    function checkDate(){
+
+        var newDate = new Date();
+        return (newDate.getMonth() !== month || newDate.getDate() !== day);
+
+    } // End of checkDate
+
     // End of adjusted w3schools code
 
-    // Updates the date currently being displayed
+
+    /**
+     * changeDate - Updates the currently displayed date
+     */
     function changeDate(){
-        // TODO
+
+        // Updating date object
+        today = new Date();
+        month = today.getMonth();
+        day = today.getDate();
 
         // Formatting & Inserting Date
         // Applying suffix to day of month
@@ -79,7 +102,9 @@ var Clock = (function(){
                 break;
         }
 
-        document.getElementById("date").innerHTML = `Today is ${monthNames[month]} ${day}`;
+        document.getElementById("date").innerHTML =
+            `Today is ${monthNames[month]} ${day}`;
+
     } // End of changeDate
 
     // Method Mapping
