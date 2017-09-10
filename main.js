@@ -35,7 +35,7 @@ function createWindow(){
     }));
 
     // Opening devtools
-    win.webContents.openDevTools();
+    //win.webContents.openDevTools();
 
     // Hooking into when window closes
     win.on('closed', () => {

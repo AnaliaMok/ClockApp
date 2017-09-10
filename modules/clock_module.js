@@ -151,7 +151,7 @@ var Clock = (function(){
 
     /**
      * changeBackground - Changes the gradient based on the current time
-     * @return {[type]} [description]
+     * and changed the font color of the schedule list items
      */
     function changeBackground(isInit){
 
@@ -195,17 +195,30 @@ var Clock = (function(){
         if(currStopIdx !== selection || isInit){
 
             var grad = context.createLinearGradient(
-                canvas.width/2,0,canvas.width/2,canvas.height
+                startPoint[0], startPoint[1], endPoint[0], endPoint[1]
             );
 
             grad.addColorStop(0, colorStops[selection][0]);
             grad.addColorStop(0.27, colorStops[selection][0]);
             grad.addColorStop(1, colorStops[selection][1]);
 
+            // Change text color of list items
+            var listItems = document.getElementsByTagName("li");
+            for(var i = 0, length = listItems.length; i < length; i++){
+                var currItem = listItems[i];
+                if(selection === 0 || selection === 2){
+                    // If early time theme or late night theme, use first color stop
+                    currItem.style.color = colorStops[selection][0];
+                }else{
+                    currItem.style.color = colorStops[selection][1];
+                }
+            }
+
             context.fillStyle = grad;
             context.fillRect(0, 0, canvas.width, canvas.height);
 
             currStopIdx = selection;
+            console.log("Background Changed!");
         }
 
 

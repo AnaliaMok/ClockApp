@@ -27,7 +27,7 @@ var Schedule = (function(){
     function updateSchedule(){
         today = new Date();
         weekday = today.getDay();
-        schedule = scheduleData[weekday];
+        schedule = scheduleData[weekday]; 
         hours = today.getHours();
         minutes = today.getMinutes();
 
