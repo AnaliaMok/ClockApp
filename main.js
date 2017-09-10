@@ -5,6 +5,8 @@
  * @author Analia Mok
  */
 
+/* jshint esversion: 6 */
+
 // Need to load index.html file
 
 // From Electron itself
@@ -26,6 +28,7 @@ let win;
 function createWindow(){
     // Can pass a third property for a custom icon
     win = new BrowserWindow({width: 800, height: 600});
+    win.setMenu(null);
 
     // Loading Index.html page
     win.loadURL(url.format({
