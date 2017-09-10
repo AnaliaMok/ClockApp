@@ -27,7 +27,9 @@ let win;
 // Creating browser window
 function createWindow(){
     // Can pass a third property for a custom icon
-    win = new BrowserWindow({width: 800, height: 600});
+    win = new BrowserWindow({
+        width: 800, height: 600, icon: "assets/images/clock.png"
+    });
     win.setMenu(null);
 
     // Loading Index.html page
