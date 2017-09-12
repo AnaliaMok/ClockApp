@@ -5,11 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>ClockApp - Editing Schedule</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat%7COpen+Sans%7CRaleway" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
+    <canvas id="background-gradient"></canvas>
     <main>
+
         <p>This is the edit schedule screen</p>
-        <p><a href="./index.html">Go Back to Clock</a></p>
+        <div id="edit-btn-holder">
+            <a href="./index.html">Go Back to Clock</a>
+        </div>
+
     </main>
 </body>
+<script src="assets/data/schedule.json"></script>
+<script src="modules/schedule_module.js"></script>
+<script src="modules/clock_module.js"></script>
+<script type="text/javascript">
+    window.onload = init;
+    function init(){
+        Clock.changeBackground(true);
+    }
+</script>
 </html>

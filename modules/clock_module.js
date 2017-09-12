@@ -230,7 +230,8 @@ var Clock = (function(){
             changeDate();
             startTime();
             changeBackground(true);
-        }
+        },
+        changeBackground: changeBackground
     };
 
 })(Schedule);
