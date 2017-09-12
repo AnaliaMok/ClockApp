@@ -25,12 +25,21 @@
                 <li>Concepts of Parallel and Distributed Systems <span>@5:30PM</span></li> -->
             </ul>
         </div>
+        <div id="edit-btn-holder">
+            <!-- <button type="button" name="editBtn">Edit Schedule</button> -->
+            <a href="./edit_schedule.html">Edit Schedule</a>
+        </div>
     </main>
 </body>
 <script src="assets/data/schedule.json"></script>
 <script src="modules/schedule_module.js"></script>
 <script src="modules/clock_module.js"></script>
 <script type="text/javascript">
+
+    // File System Module
+    const fs = require("fs");
+    // Dialog Module
+    const {dialog} = require("electron").remote;
 
     window.onload = init;
 
@@ -40,6 +49,19 @@
 
         // Initializing Schedule
         Schedule.updateSchedule();
+
+        // Testing File System Module
+        // var filePath = "./assets/data/schedule.json";
+        // var newContent = "New Content";
+        // fs.writeFile(filePath, newContent, (err) => {
+        //     if(err){
+        //         alert("An error ocurred updating the file" + err.message);
+        //         console.log(err);
+        //         return;
+        //     }
+        //     console.log("Success");
+        //
+        // })
     }
 
 </script>

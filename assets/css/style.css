@@ -136,6 +136,40 @@ div#schedule-holder ul li span{
     font-style: italic;
 }
 
+/* Edit button holder */
+div#edit-btn-holder{
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+}
+
+/* Common Styling */
+a{
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    background-color: #FFF;
+    text-decoration: none;
+    font-size: 1rem;
+    color: #3498db;
+    outline: none;
+    border: 0;
+    border-radius: 20px;
+
+    -wekit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.16);
+    -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.16);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.16);
+
+    -webkit-transition: background-color 0.3s, color 0.3s;
+    -moz-transition: background-color 0.3s, color 0.3s;
+    -o-transition: background-color 0.3s, color 0.3s;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+a:hover{
+    background-color: #3498db;
+    color: #FFF;
+}
+
 
 /* Half-Screen and Less Styling */
 @media screen and (max-width: 768px) {

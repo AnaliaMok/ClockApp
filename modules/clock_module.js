@@ -166,14 +166,14 @@ var Clock = (function(){
             startPoint = [],
             endPoint = [];
 
-        if(hour >= 6 && hour <= 11){
+        if(hour >= 6 && hour < 11){
             // Between 6am and 11am - Early Morning Theme
             selection = 0;
 
             // Linear gradient with 45 deg rotation CW
             startPoint = [0, 0];
             endPoint = [canvas.width,canvas.height];
-        }else if(hour > 11 && hour < 20){
+        }else if(hour >= 11 && hour < 20){
             // Between 11am and 8pm - Day Time Theme
             selection = 1;
 

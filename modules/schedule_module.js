@@ -27,7 +27,7 @@ var Schedule = (function(){
     function updateSchedule(){
         today = new Date();
         weekday = today.getDay();
-        schedule = scheduleData[weekday]; 
+        schedule = scheduleData[weekday];
         hours = today.getHours();
         minutes = today.getMinutes();
 
@@ -83,9 +83,18 @@ var Schedule = (function(){
     } // End of updateSchedule
 
 
+    /**
+     * editSchedule - Method that allows user to add/edit/delete their the
+     *      events in their schedule
+     */
+    function editSchedule(){
+        // TODO
+    } // End of editSchedule
+
     // Mapping methods
     return {
-        updateSchedule: updateSchedule
+        updateSchedule: updateSchedule,
+        editSchedule: editSchedule
     };
 
 })();
